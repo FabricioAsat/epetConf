@@ -5,34 +5,38 @@ import Subtitle from "../Subtitle";
 
 console.log(speakers);
 const Speakers = () => {
-  return (
-    <section id="oradores" className="text-3xl font-poppins pb-52 ">
-      <Subtitle>Oradores</Subtitle>
-      <section className="grid gap-y-10 grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 font-inter">
-        {speakers.map((speaker) => (
-          <figure className="w-4/5 mx-auto flex flex-col gap-y-2 bg-[#121f3d] rounded-2xl">
-            <img
-              className="block w-48 h-48 border-8 mx-auto rounded-full"
-              src={speaker.src}
-              alt={speaker.name}
-            />
-            <h2 className="text-xl font-bold ">{speaker.name}</h2>
-            <p className="text-sm font-medium">{speaker.ocupation}</p>
-            <nav>
-              <ul className="flex text-xl justify-center gap-x-2">
-                <li>
-                  <AiOutlineTwitter />
-                </li>
-                <li>
-                  <AiOutlineInstagram />
-                </li>
-              </ul>
-            </nav>
-          </figure>
-        ))}
-      </section>
-    </section>
-  );
+	return (
+		<section id="oradores">
+			<Subtitle>Oradores</Subtitle>
+			<div className="flex flex-wrap items-center justify-center gap-5 max-w-6xl mx-auto">
+				{speakers.map((speaker) => (
+					<div className="flex flex-col gap-y-4 border-2 border-gray-color/50 rounded-lg brightness-75 hover:brightness-125 pb-5 bg-gradient-to-bl from-transparent via-transparent to-op-primary-color backdrop-blur transition-all duration-300 w-full max-w-[250px] lg:max-w-xs">
+						<picture>
+							<img
+								src={speaker.src}
+								alt={speaker.name}
+								className="w-[250px] lg:w-80 max-h-52 object-cover"
+							/>
+						</picture>
+
+						<span className="flex flex-col">
+							<h2 className="text-2xl font-bold text-primary-color">{speaker.name}</h2>
+							<small className="text-xs font-medium italic">{speaker.ocupation}</small>
+						</span>
+
+						<nav className="flex items-center justify-center gap-x-5 text-primary-color text-3xl">
+							<a target="_blank" rel="noopener noreferrer" href={speaker.twitter}>
+								<AiOutlineTwitter />
+							</a>
+							<a target="_blank" rel="noopener noreferrer" href={speaker.instagram}>
+								<AiOutlineInstagram />
+							</a>
+						</nav>
+					</div>
+				))}
+			</div>
+		</section>
+	);
 };
 
 export default Speakers;
